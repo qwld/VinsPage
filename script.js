@@ -1,58 +1,120 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const chatBoxContainer = document.getElementById('chatBoxContainer');
-    const chatBox = document.getElementById('chatBox');
-    const userInput = document.getElementById('userInput');
-    const sendMessageBtn = document.getElementById('sendMessage');
-    const chatWindow = document.getElementById('chatWindow');
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    // Open the chat box when clicked
-    chatBoxContainer.addEventListener('click', () => {
-        chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
-    });
+/* Fullscreen background */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    color: #333;
+    text-align: center;
+}
 
-    // Handle the fake chat messages
-    sendMessageBtn.addEventListener('click', () => {
-        const userMessage = userInput.value.trim();
+/* Main content styling */
+.content {
+    position: relative;
+}
 
-        if (userMessage) {
-            // Add user message
-            const userMessageDiv = document.createElement('div');
-            userMessageDiv.classList.add('chat-message', 'user');
-            userMessageDiv.textContent = userMessage;
-            chatWindow.appendChild(userMessageDiv);
+/* Image Styling */
+.main-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
 
-            // Scroll to the bottom
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+/* Chat Box Container */
+.chat-box-container {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 10;
+}
 
-            // Clear input field
-            userInput.value = '';
+.chat-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    overflow: hidden;
+}
 
-            // Simulate AI response based on the message
-            setTimeout(() => {
-                const aiResponse = getAIResponse(userMessage);
-                const aiMessageDiv = document.createElement('div');
-                aiMessageDiv.classList.add('chat-message', 'ai');
-                aiMessageDiv.textContent = aiResponse;
-                chatWindow.appendChild(aiMessageDiv);
+.chat-header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
 
-                // Scroll to the bottom
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }, 1000);
-        }
-    });
+.chat-window {
+    padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+}
 
-    // Function to simulate AI response based on user input
-    function getAIResponse(message) {
-        message = message.toLowerCase();
+.chat-message {
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    max-width: 80%;
+}
 
-        if (message.includes('hello') || message.includes('hi')) {
-            return 'Hi there! How can I assist you today?';
-        } else if (message.includes('help')) {
-            return 'I can help you with biology-related questions. What would you like to know?';
-        } else if (message.includes('bye')) {
-            return 'Goodbye! Have a great day!';
-        } else {
-            return 'Sorry, I didn\'t understand that. Can you rephrase?';
-        }
-    }
-});
+.chat-message.ai {
+    background-color: #f1f1f1;
+    margin-left: auto;
+}
+
+.chat-message.user {
+    background-color: #d1ffd1;
+    margin-right: auto;
+}
+
+/* Button container */
+.button-container {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.chat-button:hover {
+    background-color: #0056b3;
+}
+
+/* Social handles at the bottom */
+.social-handles {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.social-handles a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.social-handles a:hover {
+    text-decoration: underline;
+}
