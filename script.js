@@ -5,116 +5,71 @@
     box-sizing: border-box;
 }
 
-/* Fullscreen background */
-body {
-    font-family: Arial, sans-serif;
+/* Fullscreen layout */
+body, html {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f4f4f9;
-    color: #333;
-    text-align: center;
+    background-color: #000;
 }
 
-/* Main content styling */
+/* Create the top and bottom black bars */
 .content {
     position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Image Styling */
-.main-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Chat Box Container */
-.chat-box-container {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 10;
-}
-
-.chat-box {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+/* Create the fading effect on the image */
+.image-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
 }
 
-.chat-header {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.chat-window {
-    padding: 15px;
-    height: 200px;
-    overflow-y: auto;
-    border-bottom: 1px solid #ddd;
-}
-
-.chat-message {
-    margin: 10px 0;
-    padding: 8px;
-    border-radius: 5px;
-    max-width: 80%;
-}
-
-.chat-message.ai {
-    background-color: #f1f1f1;
-    margin-left: auto;
-}
-
-.chat-message.user {
-    background-color: #d1ffd1;
-    margin-right: auto;
-}
-
-/* Button container */
-.button-container {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.chat-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px;
+/* Background Image */
+.background-image {
     width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    filter: brightness(60%); /* Darken the image slightly to give focus to the center */
 }
 
-.chat-button:hover {
-    background-color: #0056b3;
+/* Black bars on the top and bottom */
+.content:before, .content:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20%;
+    background-color: #000;
+    z-index: 1;
 }
 
-/* Social handles at the bottom */
-.social-handles {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
+.content:before {
+    top: 0;
 }
 
-.social-handles a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #007BFF;
+.content:after {
+    bottom: 0;
 }
 
-.social-handles a:hover {
-    text-decoration: underline;
+/* Fade effect (using linear gradient) */
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 2;
 }
