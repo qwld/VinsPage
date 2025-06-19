@@ -1,119 +1,55 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const chatBoxContainer = document.getElementById('chatBoxContainer');
+    const chatBox = document.getElementById('chatBox');
+    const chatWindow = document.getElementById('chatWindow');
 
-/* Fullscreen background */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f9;
-    color: #333;
-    text-align: center;
-}
+    const buttons = document.querySelectorAll('.chat-button');
 
-/* Main content styling */
-.content {
-    position: relative;
-}
+    // Open the chat box when clicked
+    chatBoxContainer.addEventListener('click', () => {
+        chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+    });
 
-/* Image Styling */
-.main-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
+    // Handle button clicks to simulate chat
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const userMessage = button.textContent;
 
-/* Chat Box Container */
-.chat-box-container {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 10;
-}
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('chat-message', 'user');
+            userMessageDiv.textContent = userMessage;
+            chatWindow.appendChild(userMessageDiv);
 
-.chat-box {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    overflow: hidden;
-}
+            // Scroll to the bottom
+            chatWindow.scrollTop = chatWindow.scrollHeight;
 
-.chat-header {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-}
+            // Simulate AI response based on the button clicked
+            setTimeout(() => {
+                const aiResponse = getAIResponse(userMessage);
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.classList.add('chat-message', 'ai');
+                aiMessageDiv.textContent = aiResponse;
+                chatWindow.appendChild(aiMessageDiv);
 
-.chat-window {
-    padding: 15px;
-    height: 200px;
-    overflow-y: auto;
-    border-bottom: 1px solid #ddd;
-}
+                // Scroll to the bottom
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 1000);
+        });
+    });
 
-.chat-message {
-    margin: 10px 0;
-    padding: 8px;
-    border-radius: 5px;
-    max-width: 80%;
-}
+    // Function to simulate AI response based on the user's button choice
+    function getAIResponse(message) {
+        message = message.toLowerCase();
 
-.chat-message.ai {
-    background-color: #f1f1f1;
-    margin-left: auto;
-}
-
-.chat-message.user {
-    background-color: #d1ffd1;
-    margin-right: auto;
-}
-
-input[type="text"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Social handles at the bottom */
-.social-handles {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-}
-
-.social-handles a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #007BFF;
-}
-
-.social-handles a:hover {
-    text-decoration: underline;
-}
+        if (message.includes('biology')) {
+            return 'Biology is the study of life and living organisms. It includes many subfields, such as anatomy, ecology, and genetics.';
+        } else if (message.includes('human body')) {
+            return 'The human body is made up of various systems such as the circulatory, respiratory, and digestive systems, working together to keep us alive.';
+        } else if (message.includes('brain')) {
+            return 'The brain is responsible for controlling most of the body\'s functions, including thought, memory, emotions, and movement.';
+        } else {
+            return 'I\'m not sure about that topic, can you ask something else?';
+        }
+    }
+});
