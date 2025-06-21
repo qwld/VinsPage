@@ -1,16 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Fade Background</title>
-    <link rel="stylesheet" href="style.css">
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Posh Animated Template</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 85vh; /* reduced from 100vh */
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #222277, #FFF);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-img-circle {
+      width: 420px;  /* was 360 */
+      height: 420px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      margin: 0 auto;
+      animation: floaty 6s ease-in-out infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      padding: 10px;
+    }
+
+    .hero-img-circle img.hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 50%;
+      display: block;
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* methods */
+    .methods {
+      padding: 5rem 0;
+      background-color: #fff;
+    }
+
+    .feature-link {
+      text-decoration: none;
+    }
+
+    .methods .card {
+      border: none;
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      color: #333;
+    }
+
+    .methods .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      background-color: #f0f4ff;
+    }
+
+    .methods .card h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 5rem 0;
+      text-align: center;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 2rem 0;
+    }
+  </style>
 </head>
-<body>
-    <div class="content">
-        <div class="image-container">
-            <img src="your-image.jpg" alt="Background Image" class="background-image">
+
+<body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md-6 aos-init aos-animate" data-aos="fade-right">
+          <h1 id="hero-title" style="opacity: 1;" class="">Maximize Your Physique</h1>
+          <p class="lead mt-3">Your go to page for guaranteed ways to boost your health, physique and more.
+Featuring methods on increase testosterone, HGH, and overall performance.
+No rubbish straight to the point.</p>
+          <a href="#methods" class="btn btn-light btn-lg mt-3">Explore Methods</a>
         </div>
+        <div class="col-md-5 text-center mt-5 mt-md-0 aos-init aos-animate" data-aos="zoom-in">
+          <div class="hero-img-circle">
+            <img src="https://th.bing.com/th/id/R.5a7e96aca11b1f4b3efac9813ff873cd?rik=AGin8M1J9yvwOg&amp;riu=http%3a%2f%2fwww.pngplay.com%2fwp-content%2fuploads%2f2%2fMuscle-Background-PNG-Image.png&amp;ehk=BBXSnQrh%2bPWXBC8h3%2bj880GOwFftZeMiIjH8NotA7Yg%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" class="hero-img" alt="Hero Image">
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-</html>
+  </section>
+
+  <!-- methods AS BUTTON LINKS -->
+  <section class="methods" id="methods">
+    <div class="container">
+      <div class="text-center mb-5 aos-init aos-animate" data-aos="fade-up">
+        <h2 class="fw-bold">Why should you use these?</h2>
+        <p class="text-muted">These methods can not only help with performance in the gym and with your physique but also benifit some health problems!</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+          <a href="#animated-interface" class="feature-link">
+            <div class="card">
+              <h4>HGH</h4>
+              <p>Higher growth hormone (GH) levels can boost muscle growth, burn fat, improve recovery, and support healthier skin, bones, and energy levels. It also plays a key role in tissue repair, metabolism, and overall vitality when maintained within a healthy range.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+          <a href="#mobile-first" class="feature-link">
+            <div class="card">
+              <h4>TESTOSTERONE</h4>
+              <p>Higher testosterone levels can enhance muscle mass, strength, fat loss, and libido, while also boosting energy, motivation, and mood. It supports bone density, red blood cell production, cognitive function, and overall physical and mental performance.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+          <a href="#customize" class="feature-link">
+            <div class="card">
+              <h4>IGF-1</h4>
+              <p>Higher IGF-1 levels boost muscle growth, speed up recovery, and help burn fat for a leaner, stronger, and more athletic body. They also improve bone density and support tissue repair, leading to subtle changes in facial structure and overall physical performance.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+      <h2 class="display-5">Ready to Launch Your Project?</h2>
+      <p class="lead mb-4">Just swap the content and go. This template's got your back.</p>
+      <a href="GH.hmtl" class="btn btn-outline-light btn-lg">Let?s Build</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      ? 2025 Posh Web ? Crafted with ?? by You
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      Velocity(document.getElementById("hero-title"), {
+        opacity: 1,
+        translateY: 0,
+      }, {
+        duration: 1200,
+        easing: "spring"
+      });
+    });
+  </script>
+
+
+</body></html>
